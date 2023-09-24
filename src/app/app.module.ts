@@ -19,6 +19,7 @@ import { CardComponent } from './pages/card/card.component';
 import { ProductEditComponent } from './pages/product-edit/product-edit.component';
 import { OrderComponent } from './pages/order/order.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,9 @@ import { OrderDetailComponent } from './pages/order-detail/order-detail.componen
     ],
     providers: [CookieService,
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+        {provide: LocationStrategy, useClass: HashLocationStrategy}
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
